@@ -1,0 +1,20 @@
+{% load static %}
+<div class="menu-bar">
+    {% if user_role == 'Sales Representive' %}
+    <div class="bar-1">
+        <a href=""><i class="fa-solid fa-plus"></i>Create Order</a>
+    </div>
+    {% endif %}
+    <div class="bar-2">
+        {% if user_role == 'Sales Representive' or user_role == 'Dispatcher' %}
+        {% if user_role == 'Sales Representive'%}
+        <a href="/sales-representative/">Orders</a>
+        {% endif %}
+        {% if user_role == 'Dispatcher'%}
+        <a href="/dispatcher/">Orders</a>
+        {% endif %}
+        <a href="/customers/">Customers</a>
+        <a href="">Products</a>
+        {% endif %}
+    </div>
+</div>

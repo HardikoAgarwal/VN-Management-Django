@@ -1,0 +1,77 @@
+{% extends 'HTML/base.html'%}
+{% block title %}
+Confirm Order
+{% endblock %}
+
+{% block body%}
+
+{% block navbar %}
+{% include 'HTML/navbar.html'%}
+{% endblock navbar %}
+
+{% block content %}
+<div class="main-box">
+    <div class="confirm-box" id="confirm-box">
+        <div class="box-1">
+            <p>Confirm the delivered quantities of the Items</p>
+        </div>
+        <div class="box-head">
+            <h3>{{order.order_by.name}}</h3>
+            <p>{{order.order_by.city}}, {{order.order_by.state}}</p>
+        </div>
+        <div class="box-date">
+            <p>Ordered On : {{order.timestamp}}</p>
+        </div>
+        <div class="box-table">
+            <form action="{% url 'confirm-order' %}" method="post" id="confirm_form">
+                {% csrf_token %}
+                <input type="hidden" id="con_order_id" name="con_order_id" value="{{order.id}}">
+                <div class="table-head">
+                    <p class="item-name">Items Name</p>
+                    <p class="item-quantity">Ordered Quantity</p>
+                    <p class="item-quantity">Delivered Quantity</p>
+                </div>
+                {% for items in order_items %}
+                {% if items.order.id ==  order.id %}
+                <div class="table-row">
+                    <p class="item-name">{{items.item.name}}, {{items.item.weight}} gm</p>
+                    <p class="item-quantity">{{items.ordered_quantity}} Box</p>
+                    <p class="item-quantity"><input type="number" name="delivered_quantity_{{ items.id }}"
+                            required>&nbsp;Box</p>
+                    <input type="hidden" name="item_id_{{ items.id }}" value="{{ items.id }}">
+                </div>
+                {% endif %}
+                {% endfor %}
+            </form>
+        </div>
+        <div class="error-box" id="error-box">
+            <p>Please fill all the fields</p>
+        </div>
+        <div class="box-btn">
+            <a href="{% url 'dispatcher' %}" class="btn-cancle">Cancel</a>
+            <button onclick="CheckForm()" class="btn-submit">Submit</button>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+<script>
+    function CheckForm() {
+        const form = document.getElementById('confirm_form');
+        let valid = true;
+        const errorBox = document.getElementById('error-box');
+        const inputs = form.querySelectorAll('input[type="number"]');
+        inputs.forEach(function(input) {
+            if (input.value === '' || input.value === null) {
+                errorBox.style.display = 'flex';
+                valid = false;
+                return;
+                console.log('ye kaise chala')
+            }
+        });
+        if (valid) {
+            form.submit();
+        }
+        }
+</script>
+
+{% endblock body%}

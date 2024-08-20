@@ -1,0 +1,143 @@
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-color: #8E6CC6;
+}
+section{
+    width: 97%;
+    height: 97%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #E6F3E4; */
+    border-radius: 14px 14px 0px 0px;
+    overflow: hidden;
+}
+.box-2, .box-1{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.box-1{
+    background-color: #E6F3E4;
+}
+.box-1-cont{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px 120px 20px 80px;
+    gap: 10px;
+}
+.box-1-cont h1{
+    font-family: "Titillium Web", sans-serif;
+    width: 100%;
+    font-size: 22px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+.box-1-cont h1 span{
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.box-1-cont p{
+    font-family: "Titillium Web", sans-serif;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+}
+.box-2 form{
+    width: 70%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+    gap: 20px;
+}
+.box-2 form h2{
+    font-family: "Titillium Web", sans-serif;
+    width: 100%;
+    font-size: 34px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid black;
+}
+.login-input{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+}
+.login-input p{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+.login-input input{
+    width: 100%;
+    height: fit-content;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    border-radius: 8px;
+    border: 1px solid #DFE1E3; 
+    align-items: center;
+}
+.login-input input::placeholder{
+    font-size: 14px;
+}
+.box-2 form button{
+    width: 100%;
+    height: fit-content;
+    padding: 8px 2px;
+    border-radius: 8px;
+    background-color: black;
+    border: none;
+    font-family: "Titillium Web", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.error-msg{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.error-msg p{
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    width: 100%;
+    height: fit-content;
+    padding: 4px 2px;
+    background-color: rgba(255, 0, 0, 0.15);
+    border-radius: 6px;
+    border: 0.5px red solid;
+    text-align: center;
+}

@@ -1,0 +1,10 @@
+{% load static %}
+<nav>
+    <div class="nav-bar-cont">
+        <p>Hello, <span>{{user_name}}</span></p>
+    </div>
+    <img src="{% static 'main/images/logo-vn.png'%}" alt="">
+    <div class="nav-logout">
+        <a href="/logout/"><button>Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button></a>
+    </div>
+</nav>

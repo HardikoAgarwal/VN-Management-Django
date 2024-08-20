@@ -1,0 +1,395 @@
+
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px 10px 30px;
+}
+.list-head{
+    width: 100%;
+    height: fit-content;
+    border-bottom: 2px solid rgb(20, 20, 20);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 0px 0px 0px;
+}
+.list-head h1{
+    font-family: "Titillium Web", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+    color: rgb(10, 10, 10);
+}
+.list-filter{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 0px;
+}
+.list-filter form{
+    width: 100%;
+    height: fit-content;
+    gap: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.filter-opt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 34px;
+    width: fit-content;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.opt-txt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 100%;
+    padding: 1px 14px;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: rgb(217, 217, 217);
+    gap: 8px;
+    color: rgb(20, 20, 20);
+}
+.filter-opt i{
+    font-size: 12px;
+    font-weight: 400;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease-in;
+}
+.filter-opt p{
+    font-family: "Titillium Web", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+.filter-opt input{
+    height: 0;
+    width: 0;
+    padding: 0;
+    background-color:rgb(217, 217, 217);
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    border-radius: 50px;
+    transition: all 0.2s ease-in;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.1);
+}
+.filter-opt input:focus{
+    outline: none;
+    border: 1px solid black;
+}
+.list-filter button{
+    height: 34px;
+    width: fit-content;
+    padding: 4px 22px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgb(55, 94, 151);
+    background-color: rgb(20, 20, 20);
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.main-cont{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0px 10px 0px;
+}
+.customer-list{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    column-gap: 2%;
+    row-gap: 30px;
+}
+.customer-card{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card-cont{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px 12px 12px 12px;
+    overflow: hidden;
+    z-index: 3;
+    background-color: rgb(189, 209, 202);
+
+}
+.card-name{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 15px 20px 20px 20px;
+    gap: 4px;
+}
+.card-name h2{
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    
+}
+.card-name h3{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(40, 40, 40);
+}
+.customer-card p{
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    height: fit-content;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0px 20px 15px 20px;
+}
+.customer-card p span{
+    font-weight: 600;
+    font-size: 16px;
+}
+.card-link{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -12px;
+    z-index: 2;
+    border: 1.5px solid rgb(189, 209, 202);
+    /* border: 1.5px solid black; */
+    overflow: hidden;
+    border-radius: 0px 0px 12px 12px;
+    /* background-color: rgb(189, 209, 202); */
+}
+.customer-card a{
+    font-family: "Titillium Web", sans-serif;
+    height: fit-content;
+    width: fit-content;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 5px 25px;
+    display: flex;
+    gap: 5px;
+    color: rgb(55, 94, 151);
+    color: black;
+    /* color: #B85042; */
+    margin-top: 10px;
+}
+.add-customer{
+    width: 37%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0px 0px 25px ;
+}
+.add-customer form{
+    width: 100%;
+    height: 100%;
+    padding: 50px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+.add-customer form h3{
+    font-family: "Titillium Web", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.cust-info1{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+}
+.cust-info1 h4, .cust-info2-a h4{
+    font-family: "Titillium Web", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+.cust-info2{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cust-info2-a{
+    width: 49%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+}
+.cust-info1 input, .cust-info2 input{
+    width: 100%;
+    height: 40px;
+    padding: 16px 12px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    border-radius: 6px;
+    border: 1px solid black;
+}
+.error-border:focus{
+    outline: 1px solid red;
+}
+.error-msg{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    gap: 10px;
+
+}
+.error-msg p{
+    font-family: "Montserrat", sans-serif;
+    display: none;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(255, 0, 0, 0.15);
+    border-radius: 6px;
+    border: 0.5px red solid;
+    padding: 4px;
+    text-align: center;
+
+}
+.error-msg button{
+    width: 100%;
+    height: fit-content;
+    font-family: "Titillium Web", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 8px 4px;
+}
+.submit-box{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 5;
+}
+.submit-msg-box{
+    width: 550px;
+    height: fit-content;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    padding: 20px 30px;
+    border-radius: 12px;
+    top: 50px;
+    gap: 25px;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.6);
+    animation: fromup 0.5s 1;
+}
+@keyframes fromup{
+    from{
+        top: -250px;
+    }
+    to{
+        top: 50px;
+    }
+}
+.submit-msg-box h3{
+    width: 100%;
+    height: fit-content;
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    /* padding-bottom: 15px; */
+}
+.msg-box-cont{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+}
+.msg-box-cont p{
+    width: fit-content;
+    height: fit-content;
+    font-family: "Titillium Web", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: grey;
+}
+.msg-box-cont p span{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+.msg-box-btn{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding-top: 10px; */
+}
+.msg-box-btn button{
+    height: fit-content;
+    width: 48%;
+    padding: 4px 4px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 8px;
+    border: 1px solid black;
+    cursor: pointer;
+}

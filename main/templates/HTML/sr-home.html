@@ -1,0 +1,52 @@
+{% extends 'HTML/base.html'%}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'main/css/sr.css'%}">
+<link rel="stylesheet" href="{% static 'main/css/active-orders.css'%}">
+{% endblock head %}
+
+{% block title %}
+Home | Sales Representative
+{% endblock title %}
+
+{% block body %}
+
+{% block navbar %}
+{% include 'HTML/navbar.html'%}
+{% endblock navbar%}
+
+{% block menu %}
+{% include 'HTML/menu.html'%}
+{% endblock menu %}
+
+    
+    {% block content %}
+    {% include 'HTML/active-orders.html'%}
+    <div class="pop-box" id="pop-box">
+        <!-- Box to delete a order -->
+        <div class="delete-box msg-box" id="delete-box">
+            <div class="box-head">
+                <h3 id="del-head-name"></h3>
+                <p id="del-head-place"></p>
+            </div>
+            <div class="box-head">
+                <p id="del-head-date"></p>
+            </div>
+            <div class="box-head box-3">
+                <p>Are you sure you want to delete this Order</p>
+            </div>
+            <form action="/delete-order/" method="post" id="delete_form">
+                {% csrf_token %}
+                <input type="text" value='' id="order_id" name="order_id" hidden>
+            </form>
+            <div class="box-btn">
+                <button onclick="ClosePopBox('Delete')" class="btn-cancle">Cancel</button>
+                <button onclick="submit('delete_form')"  class="btn-delete">Delete</button>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+    <script src="{% static 'main/script/global.js'%}"></script>
+
+{% endblock body %}

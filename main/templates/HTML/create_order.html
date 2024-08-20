@@ -1,0 +1,130 @@
+{% extends 'HTML/base.html'%}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'main/css/create_order.css' %}">
+{% endblock head %}
+
+{% block title %}
+Create Order
+{% endblock title %}
+
+{% block body %}
+
+{% block navbar %}
+{% include 'HTML/navbar.html'%}
+{% endblock navbar%}
+
+{% block content %}
+<div class="order-box">
+    <div class="create-order">
+        <h1>Create New Order</h1>
+        <form action="/submit-data/" method="post" id="order-form">
+            {% csrf_token %}
+            <div class="customer-select">
+                <h2>Select the Customer Name :</h2>
+                <div class="customer-field">
+                    <input id="customer-name" type="text" value="" onclick="openList()" autocomplete="off">
+                    <input id="customer-id"  name="customer-id" value='' hidden>
+                    <button type="button" id="customer-name-btn" onclick="openList()">
+                        <i class="fa-solid fa-chevron-up"></i>
+                    </button>
+                </div>
+                <div class="customer-option" id="customer-option">
+                    {% for customer in customers %}
+                    <div class="option-values-list"
+                        onclick="addValue('{{customer.id}}' , '{{customer.name}} - {{customer.city}}')">
+                        <p class="option-value">{{customer.name}} - {{customer.city}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="product-select">
+                <h2>Select the Products Name and Quantity :</h2>
+                <input type="hidden" name="item-count" id="item-count" value="1">
+                <div class="item-container" id="item-container">
+                    <div class="product-box" id="product-box-1">
+                        <div class="add_items">
+                            <div class="product-name">
+                                <input name="product-1" type="text" id="product-1" value="" onclick="openProductList(1)" autocomplete="off">
+                                <input name="product-id-1" id="product-id-1" value="" hidden>
+                                <button type="button" class="product-name-btn" id="product-name-btn-1"
+                                    onclick="openProductList(1)">
+                                    <i class="fa-solid fa-chevron-up"></i>
+                                </button>
+                            </div>
+                            <div class="product-quantity">
+                                <button type="button" class="subtract" onclick="subQuantity(1)">-1</button>
+                                <input type="number"  value="0" min="1" name="quantity-1" id="quantity-1">
+                                <button type="button" class="add-1" onclick="addQuantity_1(1)">+1</button>
+                                <button type="button" class="add-5" onclick="addQuantity_5(1)">+5</button>
+                            </div>
+                        </div>
+                        <div class="product-option" id="product-option-1">
+                            {% for product in products %}
+                            <div class="option-values-list"
+                                onclick="addProduct('{{ product.name }}', '{{ product.weight }}','{{product.id}}' , 1)">
+                                <p class="option-value">{{ product.name }} - {{ product.weight }}gm <span>&nbsp;(Per Box
+                                        - {{product.per_box}}pcs)</span></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-btn">
+                <div class="error-box" id="error-box" >
+                    <p>Please fill all necessary fields prior to Submission</p>
+                </div>
+                <div class="add-remove">
+                    <button type="button" class="Add_btn" onclick="addItems()"><i class="fa-solid fa-plus"></i>Add Product</button>
+                    <button type="button" class="Remove_btn" onclick="removeItems()"><i class="fa-solid fa-minus"></i>Remove Product</button>
+                </div>
+                <button type="button" class="submit-btn" onclick="CheckForm()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+<script src="{% static 'main/script/create_order.js'%}"></script>
+<script>
+    function addItems() {
+        const currentCount = Number(document.getElementById('item-count').value);
+        const nextCount = currentCount + 1;
+        const newItem = document.createElement('div');
+        newItem.setAttribute('id', `product-box-${nextCount}`);
+        newItem.classList.add('product-box');
+        newItem.innerHTML =
+            `<div class="product-box" id="product-box-${nextCount}">
+                <div class="add_items">
+                    <div class="product-name">
+                        <input name="product-${nextCount}" type="text" id="product-${nextCount}" value="" onclick="openProductList(${nextCount})" autocomplete="off">
+                        <input name="product-id-${nextCount}" id="product-id-${nextCount}" value="" hidden>
+                        <button type="button" class='product-name-btn' id="product-name-btn-${nextCount}" onclick="openProductList(${nextCount})">
+                            <i class="fa-solid fa-chevron-up"></i>
+                        </button>
+                    </div>
+                    <div class="product-quantity">
+                        <button type="button" class="subtract" onclick="subQuantity(${nextCount})">-1</button>
+                        <input type="number"  value="0" min="0" name="quantity-${nextCount}" id="quantity-${nextCount}">
+                        <button type="button" class="add-1" onclick="addQuantity_1(${nextCount})">+1</button>
+                        <button type="button" class="add-5" onclick="addQuantity_5(${nextCount})">+5</button>
+                    </div>
+                </div>
+                <div class="product-option" id="product-option-${nextCount}">
+                    {% for product in products %}
+                    <div class="option-values-list" onclick="addProduct('{{ product.name }}', '{{ product.weight }}','{{product.id}}' , ${nextCount})">
+                        <p class="option-value">{{ product.name }} - {{ product.weight }}gm <span>&nbsp;(Per Box - {{product.per_box}}pcs)</span></p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>`;
+        document.getElementById('item-count').value = nextCount;
+        document.getElementById('item-container').appendChild(newItem);
+    }
+</script>
+
+{% endblock body %}

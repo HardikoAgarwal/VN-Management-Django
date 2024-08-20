@@ -1,0 +1,286 @@
+body{
+    width: 100%;
+    height: fit-content;
+    min-height: 100vh;
+}
+.order-box{
+    width: 100%;
+    height: fit-content;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+.create-order{
+    width: 600px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: antiquewhite; */
+    background-color: white;
+    padding: 50px 25px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.2);
+}
+.create-order h1{
+    font-family: "Titillium Web", sans-serif;
+    width: 100%;
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+    /* background-color: aliceblue; */
+}
+form{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0px 20px;
+    /* background-color: aliceblue; */
+}
+.customer-select{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 10px; */
+    position: relative;
+    /* background-color: aliceblue; */
+}
+.customer-select h2, .product-select h2{
+    font-family: "Titillium Web", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 10px;
+    color: rgb(40, 40, 40);
+}
+.customer-field{
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+}
+.customer-field input{
+    width: 100%;
+    height: 100%;
+    padding: 8px 0px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+#customer-name-btn, .product-name-btn{
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: none;
+    background-color: rgb( 229, 229, 229);
+    transform: rotate(180deg);
+    cursor: pointer;
+    color: black;
+    border-radius: 4px;
+}
+
+.customer-option{
+    width: 85.4%;
+    display: flex;
+    flex-direction: column;
+    height: 0px;
+    overflow-y: scroll;
+    position: absolute;
+    top: 73px;
+    z-index: 10;
+}
+.option-values-list{
+    width: 100%;
+    height: fit-content;
+    padding: 6px 10px;
+    background-color: rgb(240, 240, 240);
+    border-bottom: 1px solid rgb(180, 180, 180);
+}
+.option-values-list:hover{
+    background-color:rgba(220, 220, 220);
+}
+.option-values-list p{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: black;
+}
+.option-values-list p span{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: rgb(40, 40, 40);
+}
+.product-select{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    /* background-color: aliceblue; */
+}
+.item-container{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+.product-box{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+}
+.add_items{
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-name{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.product-name input{
+    width: 100%;
+    height: 100%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 6px 8px;
+}
+
+.product-quantity{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.product-quantity input{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 2px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+.product-quantity button{
+    min-width: 28px;
+    height: 100%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: rgb( 229, 229, 229);
+    border: none;
+    border-radius: 4px;
+}
+.product-option{
+    width: calc( 65% - 38px);
+    height: 0px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 10;
+    top: 35px;
+}
+.error-box{
+    border-radius: 4px;
+}
+
+.form-btn{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0px;
+
+}
+.add-remove{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.add-remove button i{
+    font-size: 14px;
+    margin-right: 10px;
+    font-weight: 800;
+    color: black;
+}
+.Add_btn, .Remove_btn{
+    width: 49%;
+    height: fit-content;
+    padding: 8px 6px;
+    font-family: "Titillium Web", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    color: black;
+}
+.Add_btn, .Remove_btn{
+    /* background-color: rgb(200, 200, 200); */
+    border: 1px solid rgb(180, 180, 180);
+}
+.submit-btn{
+    width: 100%;
+    height: fit-content;
+    padding: 8px 6px;
+    font-family: "Titillium Web", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: rgb(60, 180, 100);
+    border: 2px solid rgb(40, 160, 80);
+    border-radius: 8px;
+    color: white;
+}
+.submit-btn:hover{
+    background-color: rgb(40, 160, 80);
+}

@@ -1,0 +1,149 @@
+{% extends 'HTML/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'main/css/customer_detail.css'%}">
+{% endblock head %}
+{% block title %} {{customer.name}} {% endblock title %}
+{% block body %}
+
+{% block navbar %}
+{% include 'HTML/navbar.html'%}
+{% endblock navbar %}
+
+{% block content %}
+<header>
+    <div class="main-box">
+        <div class="main-box-head">
+            <h2>{{customer.name}}</h2>
+        </div>
+        <div class="box-2">
+            <div class="box-2-info">
+                <div class="box-2-cont">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>{{customer.phone}}</p>
+                </div>
+                <div class="box-2-cont">
+                    <i class="fa-solid fa-map-pin"></i>
+                    <p>{{customer.address}}</p>
+                </div>
+                <div class="box-2-cont">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>{{customer.city}}</p>
+                </div>
+                <div class="box-2-cont">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <p>{{customer.state}}</p>
+                </div>
+            </div>
+            <div class="box-2-no">
+                <p>Total Orders</p>
+                <h3>{{ customer.total_orders }}</h3>
+            </div>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="sect-cont">
+        <h2>Order History</h2>
+        <div class="orders-list1">
+            <h3>Active Orders</h3>
+            {% for order in active_orders %}
+            <div class="order-card">
+                <div class="card-info">
+                    <div class="info-1">
+                        <p>Order Id : <span>&nbsp;# {{ order.id }}</span></p>
+                        <div class="status-active status">
+                            <h4>{{ order.status }}</h4>
+                        </div>
+                    </div>
+                    <div class="info-2">
+                        <p>Ordered On :<span>&nbsp; {{ order.timestamp.date }}</span></p>
+                        <p>Delivered On :<span>&nbsp; {{ order.delivered_date }}</span></p>
+                    </div>
+                </div>
+                <details>
+                    <summary>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <h5>View Items</h5>
+                        <h6>Hide Items</h6>
+                    </summary>
+                    <div class="item-list">
+                        <div class="table-box">
+                            <div class="table-head">
+                                <p class="itemName">Item Name</p>
+                                <p class="itemWeight">Weight</p>
+                                <p class="itemQuantity">Ordered Quantity</p>
+                            </div>
+                            {% for items in order_items %}
+                            {% if items.order.id == order.id %}
+                            <div class="table-row">
+                                <p class="itemName">{{items.item.name}}</p>
+                                <p class="itemWeight">{{items.item.weight}} gm</p>
+                                <p class="itemQuantity">{{items.ordered_quantity}} Box</p>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </details>
+            </div>
+            {% empty %}
+            <div class="empty-msg">
+                <p>No Active Order Found</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="orders-list2">
+            <h3>Past Orders</h3>
+            {% for order in past_orders %}
+            <div class="order-card">
+                <div class="card-info">
+                    <div class="info-1">
+                        <p>Order Id : <span>&nbsp;# {{ order.id }}</span></p>
+                        <div class="status-delivered status">
+                            <h4>{{ order.status }}</h4>
+                        </div>
+                    </div>
+                    <div class="info-2">
+                        <p>Ordered On :<span>&nbsp; {{ order.timestamp.date }}</span></p>
+                        <p>Delivered On :<span>&nbsp; {{ order.delivered_date }}</span></p>
+                    </div>
+                </div>
+                <details>
+                    <summary>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <h5>View Items</h5>
+                        <h6>Hide Items</h6>
+                    </summary>
+                    <div class="item-list">
+                        <div class="table-box">
+                            <div class="table-head">
+                                <p class="itemName">Item Name</p>
+                                <p class="itemWeight">Weight</p>
+                                <p class="itemQuantity">Ordered Quantity</p>
+                                <p class="itemQuantity">Delivered Quantity</p>
+                            </div>
+                            {% for items in order_items %}
+                            {% if items.order.id == order.id %}
+                            <div class="table-row">
+                                <p class="itemName">{{items.item.name}}</p>
+                                <p class="itemWeight">{{items.item.weight}} gm</p>
+                                <p class="itemQuantity">{{items.ordered_quantity}} Box</p>
+                                <p class="itemQuantity">{{items.delivered_quantity}} Box</p>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </details>
+            </div>
+            {% empty %}
+            <div class="empty-msg">
+                <p>No Past Orders History Found</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
+{% endblock body %}

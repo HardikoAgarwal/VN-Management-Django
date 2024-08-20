@@ -1,0 +1,94 @@
+{% extends 'HTML/base.html'%}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'main/css/disp.css'%}">
+<link rel="stylesheet" href="{% static 'main/css/active-orders.css'%}">
+
+{% endblock head %}
+
+{% block title %}
+Home | Dispatcher
+{% endblock title %}
+
+{% block body %}
+
+{% block navbar %}
+{% include 'HTML/navbar.html'%}
+{% endblock navbar%}
+
+{% block menu %}
+{% include 'HTML/menu.html'%}
+{% endblock menu %}
+
+{% block content %}
+{% include 'HTML/active-orders.html'%}
+
+{% if messages %}
+<div class="message-box">
+    <div class="message">
+        <div class="message-cont">
+            <i class="fa-regular fa-circle-check"></i>
+            <div class="cont-para">
+                <h4>Sucess</h4>
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="message-bar">
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="pop-box" id="pop-box">
+    <!-- Box to change schedule date -->
+    <div class="schedule-box msg-box" id="schedule-box">
+        <div class="box-head">
+            <h3 id="sch-head-name"></h3>
+            <p id="sch-head-place"></p>
+        </div>
+        <div class="box-date">
+            <p id="sch-head-date"></p>
+        </div>
+        <form action="/change-schedule/" method="post" id="schedule_form" name="schedule_form">
+            {% csrf_token %}
+            <p>Enter Schedule Date :</p>
+            <input type="text" id="date_id" name='date_id' value="" hidden>
+            <input type="date" id="schedule_date" name="schedule_date" value="">
+        </form>
+        <div class="error-box" id="error-box">
+            <p>Enter a valid Date</p>
+        </div>
+        <div class="box-btn">
+            <button onclick="ClosePopBox('Schedule')" class="btn-cancle">Cancel</button>
+            <button onclick="submit('schedule_form')" class="btn-submit">Submit</button>
+        </div>
+    </div>
+    <!-- Box to delete a order -->
+    <div class="delete-box msg-box" id="delete-box">
+        <div class="box-1">
+            <p>Are you sure you want to delete this Order</p>
+        </div>
+        <div class="box-head">
+            <h3 id="del-head-name"></h3>
+            <p id="del-head-place"></p>
+        </div>
+        <div class="box-date">
+            <p id="del-head-date"></p>
+        </div>
+        <form action="/delete-order/" method="post" id="delete_form">
+            {% csrf_token %}
+            <input type="text" value='' id="order_id" name="order_id" hidden>
+        </form>
+        <div class="box-btn">
+            <button onclick="ClosePopBox('Delete')" class="btn-cancle">Cancel</button>
+            <button onclick="submit('delete_form')" class="btn-delete">Delete</button>
+        </div>
+    </div>
+    
+</div>
+{% endblock content %}
+<script src="{% static 'main/script/global.js'%}"></script>
+{% endblock body %}

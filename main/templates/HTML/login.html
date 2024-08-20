@@ -1,0 +1,41 @@
+{% extends 'HTML/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+{% endblock head %}
+{% block title %} Login {% endblock title %}
+{% block body %}
+<section>
+    <div class="box-1">
+        <div class="box-1-cont">
+            <h1>Welcome to &nbsp;&nbsp;<span>VN&nbsp;Management</span></h1>
+            <p>Your Gateway to Streamline Orders, Manage Stock, Track Progress</p>
+        </div>
+    </div>
+    <div class="box-2">
+        <form action="/login/" method="post">
+            {% csrf_token %}
+            <h2>Login</h2>
+            <div class="login-input">
+                <p>User Name</p>
+                <input type="text" class="login-email" id="login-email" name="login-name" placeholder="Enter User Name">
+            </div>
+            <div class="login-input">
+                <p>Password</p>
+                <input type="password" class="login-passwrod" id="login-password" name="login-password"
+                    placeholder="Enter Password">
+            </div>
+            <div class="error-msg">
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+                {% endif %}
+                <button>Login</button>
+            </div>
+            
+        </form>
+    </div>
+</section>
+
+{% endblock body %}
