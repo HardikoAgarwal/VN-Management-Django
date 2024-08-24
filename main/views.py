@@ -287,6 +287,10 @@ def show_customers(request):
     else:
         return render(request, 'HTML/error-page.html')
 
+def add_customer(request):
+    
+    return render(request, 'HTML/add_customer.html')
+
 
 def create_customer(request):
     if request.method == 'POST':
@@ -302,6 +306,7 @@ def create_customer(request):
             city=cust_city,
             state=cust_state,
         )
+        
         new_customer.save()
 
         return redirect('show_customers')

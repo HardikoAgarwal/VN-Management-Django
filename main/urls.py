@@ -17,8 +17,7 @@ urlpatterns = [
     path('change-schedule/', views.change_schedule),
     path('submit-data/', views.submit_data, name='submit_data'),
     path('customers/',views.show_customers, name='show_customers'),
+    path('add-customer',views.add_customer, name= 'add_customer'),
     path('create-customer/',views.create_customer, name='create_customer'),
     path('customers/details/<int:id>/',views.customer_detail, name='customer_detail'),
 ]
-
-

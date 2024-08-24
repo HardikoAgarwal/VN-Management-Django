@@ -47,28 +47,67 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     weight = models.IntegerField()
     per_box = models.IntegerField()
-
+    total_order = models.IntegerField( default = 0 ) # in individual packet count
+    finished_stock = models.IntegerField( default = 0 ) # in individual packet count
+    unpacked_stock = models.IntegerField( default = 0 ) # in weight(gm) 
+    required_production = models.IntegerField( default = 0 ) 
+    required_packaging = models.IntegerField( default = 0 )
+    
     def __str__(self):
         return f"{self.name} ({self.weight} gm)  (Per Box = {self.per_box})"
     
     class Meta:
         ordering = ['name']
         
-    def save(self, *args, **kwargs):
-        super(Product, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super(Product, self).save(*args, **kwargs)
         
-        if not RequiredItem.objects.filter(item=self).exists():
-            RequiredItem.objects.create(item=self, required_quantity=0)
+    #     if not RequiredItem.objects.filter(item=self).exists():
+    #         RequiredItem.objects.create(item=self, required_quantity=0)
     
     
-class RequiredItem(models.Model):
-    item = models.ForeignKey(Product, on_delete = models.CASCADE)
-    required_quantity = models.IntegerField(default=0)
+# class RequiredItem(models.Model):
+#     item = models.ForeignKey(Product, on_delete = models.CASCADE)
+#     required_quantity = models.IntegerField(default=0)
 
+#     def __str__(self):
+#         return f"{self.item.name}"
+
+class ProductionPlan(models.Model):
+    timestamp = models.DateTimeField(default=datetime.now)
+    
     def __str__(self):
-        return f"{self.item.name}"
+        return f"{self.timestamp}'s Plan"
+    
+    
+class PackagingPlan(models.Model):
+    timestamp = models.DateTimeField(default=datetime.now)
+    
+    def __str__(self):
+        return f"{self.timestamp}'s Plan"
+    
 
-
+class ProductionPlanItem(models.Model):
+    plan = models.ForeignKey(ProductionPlan, on_delete=models.CASCADE)
+    item = models.ForeignKey(Product, on_delete=models.CASCADE)
+    planned_quantity = models.IntegerField(default=0) # in weight(gm) 
+    produced_quantity = models.IntegerField(default=0) # in weight(gm)
+    
+    def __str__(self):
+        return f"{self.name}"
+    
+    
+class PackagingPlanItem(models.Model):
+    plan = models.ForeignKey(PackagingPlan, on_delete=models.CASCADE)
+    item = models.ForeignKey(Product, on_delete=models.CASCADE)
+    planned_quantity = models.IntegerField(default=0) # in weight(gm) 
+    used_weight = models.IntegerField(default=0) # in weight(gm)
+    packed_quantity = models.IntegerField(default=0) # in individual packet count
+    
+    def __str__(self):
+        return f"{self.name}"
+    
+    
 class OrderItem(models.Model):
     order = models.ForeignKey(Order,on_delete=models.CASCADE)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
